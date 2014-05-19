@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Osobe</title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          </button>
+          <a class="navbar-brand" href="#">Django Time Scheduler</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/osobaprojekt">Projekt-Osoba</a></li>
+            <li class="active"><a href="/osoba">Osoba</a></li>
+            <li><a href="/projekt">Projekt</a></li>
+          </ul>
+              <form class="navbar-form navbar-right" action="" method="get">
+                  <input type="text" name="q" class="form-control" style="padding: 0 170px 0 10px" placeholder="...po Ime | Prezime">
+                  <button type="submit" class="btn btn-primary" style="padding: 6px 50px 6px 50px">Pretraga</button>
+              </form>
+        </div>
+      </div>
+    </div>
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container theme-showcase">
+        <div class="jumbotron">
+            <div class="container">
+                <hr class="featurette-divider"/>
+                <div class="col-md-6 col-md-offset-3">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ime</th>
+                                <th>Prezime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for o in osobe %}
+                            <tr>
+                                <td>{{ o.id_osoba }}</td>
+                                <td>{{ o.ime_osoba }}</td>    
+                                <td>{{ o.prezime_osoba }}</td>
+                            </tr>
+                            {% endfor %}    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+        <div class="row featurette">
+        <div class="col-md-6 col-md-offset-3">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+
+      <hr>
+                    <form action="/search/" method="get">
+                        <input type="text" name="q">
+                        <input type="submit" value="Search">
+                    </form>
+
+            <form action="/create" method="POST">
+                {% csrf_token %}
+                <input type="text"/>
+                <input type="submit" value="Create"/>
+            </form>
+        </div>
+      </div>
+      <hr/>
+        <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    </body>
+</html>

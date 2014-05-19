@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Osoba - Projekt</title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          </button>
+          <a class="navbar-brand" href="#">Django Time Scheduler</a>
+        </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="/osobaprojekt" class="active">Projekt-Osoba</a></li>
+                  <li><a href="/osoba">Osoba</a></li>
+                  <li><a href="/projekt">Projekt</a></li>
+              </ul>
+              <form class="navbar-form navbar-right" method="GET">
+                  <input type="text" name="q" class="form-control" style="padding: 0 170px 0 10px" placeholder="...po Projekt | Osoba">
+                  <button type="submit" class="btn btn-primary" style="padding: 6px 50px 6px 50px">Pretraga</button>
+              </form>
+          </div>
+      </div>
+    </div>
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container theme-showcase">
+        <div class="jumbotron">
+            <div class="container">
+                <hr class="featurette-divider"/>
+                <div class="col-md-10 col-md-offset-1">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Projekt</th>
+                                <th>Osoba</th>
+                                <th>Broj Sati</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for op in oNp %}
+                            <tr>
+                                <td>{{ op.id }}</td>
+                                <td>{{ op.id_projekt }}</td>    
+                                <td>{{ op.id_osoba }}</td>
+                                <td>{{ op.br_sati }}</td>
+                                <td>{{ op.datum }}</td>
+                            </tr>
+                            {% endfor %}    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+        <div class="row featurette">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Koja osoba radi na nekom projektu</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/create" method="POST">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Id projekt</label>
+                                <input type="number" class="form-control" id="id_projekt" placeholder="Unesi id projekta">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Id osoba</label>
+                                <input type="number" class="form-control" id="id_osoba" placeholder="Unesi id osobe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Broj sati</label>
+                                <input type="number" class="form-control" id="br_sati" placeholder="Broj sati">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Datum</label>
+                                <input type="date" class="form-control" id="datum" placeholder="Unesi datum">
+                            </div>
+
+                            <input type="submit" value="Spremi" class="btn btn-primary btn-block"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <hr/>
+        <footer>
+        <p>&copy; Igic 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    </body>
+</html>
