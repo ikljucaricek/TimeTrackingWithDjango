@@ -26,4 +26,4 @@ class OsobaProjekt(models.Model):
     id_projekt = models.ForeignKey(Projekt)
     id_osoba = models.ForeignKey(Osoba)
     br_sati = models.IntegerField()
-    datum = models.DateField(auto_now_add = True)
+    datum = models.DateField(null = True, blank = True)#null = True, blank = True
