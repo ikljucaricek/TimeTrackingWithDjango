@@ -25,6 +25,7 @@
                                 <th>Id</th>
                                 <th>Ime</th>
                                 <th>Prezime</th>
+                                <th>Akcija</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,7 @@
                                 <td>{{ o.id_osoba }}</td>
                                 <td>{{ o.ime_osoba }}</td>    
                                 <td>{{ o.prezime_osoba }}</td>
+                                <td><a href="/obrisati/{{o.id_osoba}}">Obrisati</a></td>
                             </tr>
                             {% endfor %}    
                         </tbody>
@@ -51,12 +53,12 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="Input2">Ime osobe</label>
-                                <input type="text" class="form-control" name="ime_osoba" placeholder="Tu ide ime">
+                                <input type="text" class="form-control" name="ime_osoba" placeholder="Tu ide ime" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="Input3">Prezime osobe</label>
-                                <input type="text" class="form-control" name="prezime_osoba" placeholder="..a tu prezime">
+                                <input type="text" class="form-control" name="prezime_osoba" placeholder="..a tu prezime" required>
                             </div>
 
                             <input type="submit" value="Spremi" class="btn btn-primary btn-block"/>

@@ -19,20 +19,24 @@ def osobaprojekt(request):
         osoba = request.POST.get('id_osoba')
         br_sati = request.POST.get('br_sati')
         datum = request.POST.get('datum')
-        #osoba_projekt = models.OsobaProjekt(id_projekt, id_osoba, br_sati)
         offer = models.OsobaProjekt.objects.create(id_projekt_id=projekt, id_osoba_id=osoba, br_sati=br_sati, datum=datum)
-        #osoba_projekt.save()
         osobaprojekt_sve = models.OsobaProjekt.objects.all()
+        osobe = models.Osoba.objects.all()
+        projekti = models.Projekt.objects.all()
         return redirect('index')
     else:
         if 'q' in request.GET and request.GET['q']:
             q = request.GET['q']
             osobaprojekt_sve = models.OsobaProjekt.objects.all()
+            osobe = models.Osoba.objects.all()
+            projekti = models.Projekt.objects.all()
             for qry in q.split():
                 osobaprojekt_sve = osobaprojekt_sve.filter(Q(id_projekt = qry)|Q(id_osoba = qry))
         else:
             osobaprojekt_sve = models.OsobaProjekt.objects.all()
-    ctx = { 'oNp':osobaprojekt_sve }
+            osobe = models.Osoba.objects.all()
+            projekti = models.Projekt.objects.all()
+    ctx = { 'oNp':osobaprojekt_sve, 'osobe' :osobe, 'projekti':projekti}
     return render(request, 'osobaprojekt.html', ctx)
 
 def osobe(request):
@@ -71,3 +75,11 @@ def projekti(request):
             projekti_svi = models.Projekt.objects.all()
     ctx = { 'projekti' : projekti_svi }
     return render(request, "projekti.html", ctx)
+
+def brisanje_osobe(request, id):
+    models.Osoba.objects.get(id_osoba=id).delete()
+    return redirect('index')
+
+def brisanje_projekta(request, id):
+    models.Projekt.objects.get(id_projekt=id).delete()
+    return redirect('index')

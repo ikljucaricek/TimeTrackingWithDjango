@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^osobaprojekt/', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.osobaprojekt'),
     url(r'^osoba/$', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.osobe'),
     url(r'^projekt/', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.projekti'),
+    url(r'^obrisati/(?P<id>\d+)/$', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.brisanje_osobe'),
+    url(r'^obrisati-p/(?P<id>\d+)/$', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.brisanje_projekta'),
     #url(r'^osoba/?q=$', 'TimeTrackingWithDjango.ProjectManagerToolInDjango.views.search'),
 
     # Uncomment the admin/doc line below to enable admin documentation:

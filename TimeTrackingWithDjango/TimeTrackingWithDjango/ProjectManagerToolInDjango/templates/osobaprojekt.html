@@ -55,13 +55,23 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="Input">Id projekt</label>
-                                <input type="number" class="form-control" id="id_projekt" name="id_projekt" placeholder="Unesi id projekta">
+                                <label for="Input">Naziv projekta</label>
+                                <select name="id_projekt" class="form-control" required="">
+                                    <option/>
+                                    {% for projekt in projekti %}
+                                    <option value="{{projekt.id_projekt}}">{{projekt.naziv_projekt}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="Input1">Id osoba</label>
-                                <input type="number" class="form-control" id="id_osoba" name="id_osoba" placeholder="Unesi id osobe">
+                                <label for="Input1">Ime osobe</label>
+                                <select name="id_osoba" class="form-control" required>
+                                    <option/>
+                                    {% for osoba in osobe %}
+                                    <option value="{{osoba.id_osoba}}">{{osoba}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
 
                             <div class="form-group">

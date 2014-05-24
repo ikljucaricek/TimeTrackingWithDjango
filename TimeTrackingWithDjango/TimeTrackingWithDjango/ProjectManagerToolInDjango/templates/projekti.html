@@ -27,6 +27,7 @@
                                 <th>Datum Pocetak</th>
                                 <th>Datum Kraj</th>
                                 <th>Aktivan</th>
+                                <th>Akcija</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,7 @@
                                 <td>{{ p.datum_pocetak }}</td>
                                 <td>{{ p.datum_zavrsetak }}</td>
                                 <td>{{ p.aktivan }}</td>
+                                <td><a href="/obrisati-p/{{p.id_projekt}}">Obrisati</a></td>
                             </tr>
                             {% endfor %}    
                         </tbody>
@@ -55,17 +57,17 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="Input2">Naziv projekta</label>
-                                <input type="text" class="form-control" name="naziv_projekt" placeholder="unesi naziv projekta">
+                                <input type="text" class="form-control" name="naziv_projekt" placeholder="unesi naziv projekta" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="Input3">Da li je projekt aktivan</label>
-                                <input type="checkbox" class="form-control" name="aktivan" placeholder="aktivan?">
+                                <input type="checkbox" class="form-control" name="aktivan" placeholder="aktivan?" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="Input4">Zapoceo projekt</label>
-                                <input type="date" class="form-control" name="datum_pocetak" placeholder="pocetak P...">
+                                <input type="date" class="form-control" name="datum_pocetak" placeholder="pocetak P..." required>
                             </div>
 
                             <div class="form-group">
